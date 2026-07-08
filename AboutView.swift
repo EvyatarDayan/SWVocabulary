@@ -34,11 +34,12 @@ struct AboutView: View {
                     
                     // About SWVocabulary Section
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("About SWVocabulary")
+                        Text("About SW-Vocabulary")
                             .font(.title2)
                             .fontWeight(.bold)
+                            .foregroundColor(.appRed)
                         
-                        Text("SWVocabulary is a comprehensive Swedish vocabulary learning app designed to help you master Swedish words with ease. Practice vocabulary with multiple-choice questions, test your knowledge with translation exercises, and track your progress. Learn Swedish words with accurate English translations and example sentences. Build your vocabulary systematically with word states (new, learning, review, weak, mastered) and never miss a learning opportunity again.")
+                        Text("SW-Vocabulary is a comprehensive Swedish vocabulary learning app designed to help you master Swedish words with ease. Practice vocabulary with multiple-choice questions, test your knowledge with translation exercises, and track your progress. Learn Swedish words with accurate English translations and example sentences. Build your vocabulary systematically with word states (new, learning, review, weak, mastered) and never miss a learning opportunity again.")
                             .font(.body)
                             .multilineTextAlignment(.leading)
                     }
@@ -51,6 +52,7 @@ struct AboutView: View {
                         Text("About ABASHELARI")
                             .font(.title2)
                             .fontWeight(.bold)
+                            .foregroundColor(.appRed)
                         
                         Text("At ABASHELARI, we believe in creating software that makes everyday life simpler, smarter, and more enjoyable. Our mission is to develop innovative digital solutions that blend creativity with technology, offering users tools that are intuitive, reliable, and engaging.")
                             .font(.body)
@@ -74,10 +76,14 @@ struct AboutView: View {
                     Text("About")
                         .font(.headline)
                         .fontWeight(.semibold)
+                        .foregroundColor(.appRed)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button(action: {
                         dismiss()
+                    }) {
+                        Text("Done")
+                            .foregroundColor(.appRed)
                     }
                 }
             }

@@ -65,7 +65,7 @@ struct HistoryView: View {
                         Spacer()
                         Text("Practice History")
                             .font(.system(size: 28, weight: .bold, design: .rounded))
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                         Spacer()
                     }
                     .padding(.horizontal, 20)
@@ -76,7 +76,7 @@ struct HistoryView: View {
                         Spacer()
                         Text("Test History")
                             .font(.system(size: 28, weight: .bold, design: .rounded))
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                         Spacer()
                     }
                     .padding(.horizontal, 20)
@@ -87,7 +87,7 @@ struct HistoryView: View {
                         Spacer()
                         Text("History")
                             .font(.system(size: 28, weight: .bold, design: .rounded))
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                         Spacer()
                     }
                     .padding(.horizontal, 20)
@@ -104,7 +104,7 @@ struct HistoryView: View {
                         }) {
                             Text("Close")
                                 .font(.body)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.appRed)
                         }
                     }
                     .padding(.horizontal, 25)
@@ -150,6 +150,7 @@ struct HistoryView: View {
             Text("No History Yet")
                 .font(.title2)
                 .fontWeight(.semibold)
+                .foregroundColor(.appRed)
             Text(emptyStateMessage)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
@@ -224,7 +225,7 @@ struct HistoryResultRow: View {
                     Text(item.type == .test ? "Test" : "Practice")
                         .font(.body)
                         .fontWeight(.medium)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.appRed)
                     Text("•")
                         .foregroundColor(.secondary)
                 }
@@ -287,10 +288,10 @@ struct HistoryResultRow: View {
         dash2.foregroundColor = .primary
         attributedString.append(dash2)
         
-        // "Wrong: X" in red (bold)
+        // "Wrong: X" in app red (bold)
         var wrongAttr = AttributedString("Wrong: \(wrong)")
         wrongAttr.font = .system(size: 13, weight: .bold)
-        wrongAttr.foregroundColor = .red
+        wrongAttr.foregroundColor = .appRed
         attributedString.append(wrongAttr)
         
         // " - " (black dash)

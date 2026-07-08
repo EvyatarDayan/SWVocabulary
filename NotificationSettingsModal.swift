@@ -18,7 +18,7 @@ struct NotificationSettingsModal: View {
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Notifications")
                         .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.primary)
+                        .foregroundColor(.appRed)
                     
                     Toggle("Enable Daily Reminders", isOn: Binding(
                         get: { notificationManager.notificationsEnabled },
@@ -42,7 +42,7 @@ struct NotificationSettingsModal: View {
                     VStack(alignment: .leading, spacing: 16) {
                         Text("Daily Reminder Time")
                             .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.primary)
+                            .foregroundColor(.appRed)
                         
                         DatePicker(
                             "Time",
@@ -71,8 +71,9 @@ struct NotificationSettingsModal: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        dismiss()
+                    Button(action: { dismiss() }) {
+                        Text("Done")
+                            .foregroundColor(.appRed)
                     }
                 }
             }

@@ -65,7 +65,7 @@ struct MyListView: View {
                     Spacer()
                     Text("Words")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
-                        .foregroundColor(.blue)
+                        .foregroundColor(.appRed)
                     Spacer()
                 }
             }
@@ -132,7 +132,7 @@ struct MyListView: View {
                     Text("No words found")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.appRed)
                     Text("Try a different search term")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
@@ -162,7 +162,7 @@ struct MyListView: View {
             Text("No words in your list")
                 .font(.title2)
                 .fontWeight(.semibold)
-                .foregroundColor(.primary)
+                .foregroundColor(.appRed)
             
             Text("Add words to your list from the test or practice view")
                 .font(.subheadline)
@@ -211,7 +211,7 @@ struct MyListWordRow: View {
                         .renderingMode(.template)
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 24, height: 24)
-                        .foregroundColor(audioManager.isAudioReady ? .blue : .gray)
+                        .foregroundColor(audioManager.isAudioReady ? .appRed : .gray)
                         .opacity(audioManager.isPlaying ? 0.5 : 1.0)
                 }
                 .disabled(!audioManager.isAudioReady || audioManager.isPlaying)
@@ -221,7 +221,7 @@ struct MyListWordRow: View {
                 Text(word.swedish)
                     .font(.title3)
                     .fontWeight(.semibold)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.appRed)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 // Divider
@@ -238,7 +238,7 @@ struct MyListWordRow: View {
                 // Info icon (visual indicator)
                 Image(systemName: "info.circle.fill")
                     .font(.system(size: 20))
-                    .foregroundColor(.blue)
+                    .foregroundColor(.appRed)
             }
             .frame(height: 30)
             .padding(16)
@@ -307,7 +307,7 @@ struct MyListWordDetailModal: View {
                         Spacer()
                         Text("More info")
                             .font(.system(size: 28, weight: .bold, design: .rounded))
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                         Spacer()
                         
                         // Horizontal divider
@@ -323,7 +323,7 @@ struct MyListWordDetailModal: View {
                                 Spacer()
                                 Text(word.swedish)
                                     .font(.system(size: 36, weight: .bold))
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(.appRed)
                                     .multilineTextAlignment(.center)
                                 
                                 Button(action: {
@@ -334,7 +334,7 @@ struct MyListWordDetailModal: View {
                                         .renderingMode(.template)
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 40, height: 40)
-                                        .foregroundColor(audioManager.isAudioReady ? .blue : .gray)
+                                        .foregroundColor(audioManager.isAudioReady ? .appRed : .gray)
                                         .opacity(audioManager.isPlaying ? 0.5 : 1.0)
                                 }
                                 .disabled(audioManager.isPlaying || !audioManager.isAudioReady)
@@ -392,12 +392,12 @@ struct MyListWordDetailModal: View {
                         Button(action: {
                             dismiss()
                         }) {
-                            Text("Got it")
+                                Text("Got it")
                                 .font(.headline)
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, 16)
-                                .background(Color.blue)
+                                .background(Color.appRed)
                                 .cornerRadius(12)
                         }
                         .padding(.horizontal, 20)
@@ -418,7 +418,7 @@ struct MyListWordDetailModal: View {
                     }) {
                         Text("Close")
                             .font(.body)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                     }
                 }
             }

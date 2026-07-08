@@ -26,12 +26,24 @@ struct TermsPrivacyView: View {
                 
                 // Content
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text(contentText)
-                            .font(.body)
-                            .lineSpacing(4)
-                            .fixedSize(horizontal: false, vertical: true)
+                    VStack(alignment: .leading, spacing: 12) {
+                        ForEach(contentText.components(separatedBy: "\n\n"), id: \.self) { para in
+                            let trimmed = para.trimmingCharacters(in: .whitespacesAndNewlines)
+                            // Detect short ALL CAPS headings and style them as titles
+                            let isAllCaps = trimmed == trimmed.uppercased() && trimmed.count <= 40
+                            if isAllCaps {
+                                Text(trimmed)
+                                    .font(.headline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.appRed)
+                            } else {
+                                Text(trimmed)
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            }
+                        }
                     }
+                    .lineSpacing(4)
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
@@ -43,10 +55,12 @@ struct TermsPrivacyView: View {
                     Text("Terms & Privacy")
                         .font(.headline)
                         .fontWeight(.semibold)
+                        .foregroundColor(.appRed)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        dismiss()
+                    Button(action: { dismiss() }) {
+                        Text("Done")
+                            .foregroundColor(.appRed)
                     }
                 }
             }
@@ -69,13 +83,13 @@ struct TermsPrivacyView: View {
     
     Last Updated: January 26, 2026
     
-    Welcome to SWVocabulary. These Terms of Use ("Terms") govern your access to and use of the SWVocabulary mobile application ("App"). By using the App, you agree to be bound by these Terms.
+    Welcome to SW-Vocabulary. These Terms of Use ("Terms") govern your access to and use of the SW-Vocabulary mobile application ("App"). By using the App, you agree to be bound by these Terms.
     
     1. ACCEPTANCE OF TERMS
-    By downloading, installing, or using SWVocabulary, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy.
+    By downloading, installing, or using SW-Vocabulary, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy.
     
     2. DESCRIPTION OF SERVICE
-    SWVocabulary is a mobile application designed to help users learn Swedish vocabulary. The App allows users to:
+    SW-Vocabulary is a mobile application designed to help users learn Swedish vocabulary. The App allows users to:
     - Learn Swedish words with English translations
     - Practice vocabulary with multiple-choice questions
     - Test knowledge with translation exercises
@@ -94,10 +108,10 @@ struct TermsPrivacyView: View {
     - Use automated systems to access the App
     
     5. INTELLECTUAL PROPERTY
-    The App and its content, including but not limited to text, graphics, logos, and software, are the property of SWVocabulary and are protected by copyright and other intellectual property laws.
+    The App and its content, including but not limited to text, graphics, logos, and software, are the property of SW-Vocabulary and are protected by copyright and other intellectual property laws.
     
     6. LIMITATION OF LIABILITY
-    SWVocabulary is provided "as is" without warranties of any kind. We do not guarantee that the App will be error-free or uninterrupted. In no event shall SWVocabulary be liable for any indirect, incidental, or consequential damages.
+    SW-Vocabulary is provided "as is" without warranties of any kind. We do not guarantee that the App will be error-free or uninterrupted. In no event shall SW-Vocabulary be liable for any indirect, incidental, or consequential damages.
     
     7. MODIFICATIONS TO TERMS
     We reserve the right to modify these Terms at any time. Your continued use of the App after any changes constitutes acceptance of the modified Terms.
@@ -111,10 +125,10 @@ struct TermsPrivacyView: View {
     
     Last Updated: January 26, 2026
     
-    At SWVocabulary, we are committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our mobile application.
+    At SW-Vocabulary, we are committed to protecting your privacy. This Privacy Policy explains how we handle your information when you use our mobile application.
     
     1. NO DATA COLLECTION
-    SWVocabulary does not collect, transmit, or store any of your personal information on external servers. We do not collect:
+    SW-Vocabulary does not collect, transmit, or store any of your personal information on external servers. We do not collect:
     - Usage analytics
     - Device information
     - Location data
@@ -168,13 +182,13 @@ struct TermsPrivacyView: View {
     Last Updated: January 26, 2026
     
     1. NO WARRANTY
-    SWVocabulary is provided "as is" and "as available" without any warranties, express or implied. We do not guarantee that the App will be error-free, uninterrupted, or free from defects.
+    SW-Vocabulary is provided "as is" and "as available" without any warranties, express or implied. We do not guarantee that the App will be error-free, uninterrupted, or free from defects.
     
     2. ACCURACY OF CONTENT
     While we strive to ensure accurate vocabulary translations and content, we cannot guarantee the accuracy of all translations and learning materials. Users are responsible for verifying information and should consult additional resources for comprehensive learning.
     
     3. LIMITATION OF LIABILITY
-    To the fullest extent permitted by law, SWVocabulary shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of data or use, arising out of or in connection with the use of the App.
+    To the fullest extent permitted by law, SW-Vocabulary shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of data or use, arising out of or in connection with the use of the App.
     
     4. USER RESPONSIBILITY
     Users are solely responsible for:
@@ -193,7 +207,7 @@ struct TermsPrivacyView: View {
     The App is for educational and learning purposes only. It does not constitute professional language instruction or certification. Users should consult with qualified language instructors for formal education.
     
     8. ACCEPTANCE
-    By using SWVocabulary, you acknowledge that you have read, understood, and agree to this Disclaimer.
+    By using SW-Vocabulary, you acknowledge that you have read, understood, and agree to this Disclaimer.
     """
 }
 

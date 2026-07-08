@@ -46,7 +46,7 @@ struct PracticeView: View {
                     Spacer()
                     Text("Practice")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
-                        .foregroundColor(.blue)
+                        .foregroundColor(.appRed)
                     Spacer()
                 }
                 
@@ -68,7 +68,7 @@ struct PracticeView: View {
                         }) {
                             Text("Reset")
                                 .font(.body)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.appRed)
                         }
                     }
                 }
@@ -121,7 +121,7 @@ struct PracticeView: View {
                                     Spacer()
                                     letterByLetterText(word.swedish)
                                         .font(.system(size: swedishWordFontSize, weight: .bold))
-                                        .foregroundColor(.primary)
+                                        .foregroundColor(.appRed)
                                         .multilineTextAlignment(.center)
                                         .lineLimit(1)
                                         .minimumScaleFactor(0.5) // Allow scaling down to 50% if needed
@@ -137,7 +137,7 @@ struct PracticeView: View {
                                                 .renderingMode(.template)
                                                 .aspectRatio(contentMode: .fit)
                                                 .frame(width: 40, height: 40)
-                                                .foregroundColor(audioManager.isAudioReady ? .blue : .gray)
+                                                .foregroundColor(audioManager.isAudioReady ? .appRed : .gray)
                                                 .opacity(audioManager.isPlaying ? 0.5 : 1.0)
                                         }
                                         .disabled(audioManager.isPlaying || !audioManager.isAudioReady)
@@ -197,7 +197,7 @@ struct PracticeView: View {
                             if showFeedback {
                                 Text(isCorrect ? "Correct!" : "Incorrect!")
                                     .font(.system(size: 24, weight: .bold))
-                                    .foregroundColor(isCorrect ? .green : .red)
+                                    .foregroundColor(isCorrect ? .green : .appRed)
                                     .padding(.top, 16)
                                 
                                 // "Example" button - show for both correct and incorrect answers
@@ -217,7 +217,7 @@ struct PracticeView: View {
                                             }) {
                                                 Text("Example")
                                                     .font(.system(size: 16, weight: .medium))
-                                                    .foregroundColor(.blue)
+                                                    .foregroundColor(.appRed)
                                                     .underline()
                                             }
                                             .padding(.top, 8)
@@ -281,7 +281,7 @@ struct PracticeView: View {
                                             .renderingMode(.template)
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: 24, height: 24)
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(Color.appRed)
                                             .transition(.opacity)
                                     }
                                     Text("Choose an answer")
@@ -306,7 +306,7 @@ struct PracticeView: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
-                            .background((selectedAnswer != nil && sessionQuestions < 20) ? Color.blue : Color.gray)
+                            .background((selectedAnswer != nil && sessionQuestions < 20) ? Color.appRed : Color.gray)
                             .cornerRadius(12)
                     }
                     .disabled(selectedAnswer == nil || sessionQuestions >= 20)
@@ -320,8 +320,10 @@ struct PracticeView: View {
                     
                     Image("practice")
                         .resizable()
+                        .renderingMode(.template)
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 80, height: 80)
+                        .foregroundColor(.appRed)
                     
                     Text("Master Swedish: Match the words and test your skills. Lycka till!")
                         .font(.body)
@@ -340,7 +342,7 @@ struct PracticeView: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
-                            .background(Color.blue)
+                            .background(Color.appRed)
                             .cornerRadius(12)
                     }
                     .padding(.horizontal, 40)
@@ -350,10 +352,10 @@ struct PracticeView: View {
                     }) {
                         Text("Previous practices")
                             .font(.headline)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.appRed)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
-                            .background(Color.blue.opacity(0.1))
+                            .background(Color.appRed.opacity(0.1))
                             .cornerRadius(12)
                     }
                     .padding(.horizontal, 60)
@@ -1009,7 +1011,7 @@ struct OptionButton: View {
                         } else if isIncorrect {
                             Image(systemName: "xmark.circle.fill")
                                 .font(.system(size: 18))
-                                .foregroundColor(.red)
+                                .foregroundColor(.appRed)
                         } else {
                             // Invisible placeholder to maintain consistent width
                             Color.clear
@@ -1038,9 +1040,9 @@ struct OptionButton: View {
         if isCorrect {
             return Color.green.opacity(0.15)
         } else if isIncorrect {
-            return Color.red.opacity(0.15)
+            return Color.appRed.opacity(0.15)
         } else if isSelected {
-            return Color.blue.opacity(0.1)
+            return Color.appRed.opacity(0.1)
         } else {
             return colorScheme == .dark ? Color(.systemGray6) : Color(.systemBackground)
         }
@@ -1050,7 +1052,7 @@ struct OptionButton: View {
         if isCorrect {
             return Color(.green) // medium green border (#90ee90 style)
         } else if isIncorrect {
-            return Color(.red)   // medium red border
+            return Color.appRed   // medium red border
         } else {
             return Color.gray.opacity(0.6) // gray thin border for the third (neutral) option
         }
@@ -1079,12 +1081,12 @@ struct MyListButton: View {
             }
             isInMyList = myListManager.isInMyList(swedish: word.swedish, english: word.english)
         }) {
-            Image("My list")
+                Image("My list")
                 .resizable()
                 .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 24, height: 24)
-                .foregroundColor(isInMyList ? .blue : .gray)
+                .foregroundColor(isInMyList ? .appRed : .gray)
         }
         .onAppear {
             isInMyList = myListManager.isInMyList(swedish: word.swedish, english: word.english)
@@ -1111,7 +1113,7 @@ struct PracticeSummaryModal: View {
                 // Motivational message
                 Text(motivationalMessage)
                     .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(.blue)
+                    .foregroundColor(.appRed)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 40)
                 
@@ -1133,7 +1135,7 @@ struct PracticeSummaryModal: View {
                     if wrongRatio > 0 {
                         Circle()
                             .trim(from: correctRatio, to: correctRatio + wrongRatio)
-                            .stroke(Color.red, style: StrokeStyle(lineWidth: 30, lineCap: .round))
+                            .stroke(Color.appRed, style: StrokeStyle(lineWidth: 30, lineCap: .round))
                             .frame(width: 200, height: 200)
                             .rotationEffect(.degrees(-90))
                     }
@@ -1198,9 +1200,9 @@ struct PracticeSummaryModal: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        dismiss()
-                        // onDismiss will be called by the sheet's onDismiss modifier
+                    Button(action: { dismiss() }) {
+                        Text("Done")
+                            .foregroundColor(.appRed)
                     }
                 }
             }

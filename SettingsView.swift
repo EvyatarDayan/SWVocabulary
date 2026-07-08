@@ -35,7 +35,7 @@ struct SettingsView: View {
                     Spacer()
                     Text("Settings")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
-                        .foregroundColor(.blue)
+                        .foregroundColor(.appRed)
                     Spacer()
                 }
             }
@@ -51,7 +51,7 @@ struct SettingsView: View {
                 SettingsSection(header: "MODE") {
                     SettingsRow(
                         icon: "moon.fill",
-                        iconColor: .purple,
+                    iconColor: .appRed,
                         title: "Dark Mode",
                         subtitle: "Enable dark mode",
                         accessory: .toggle(isOn: $darkModeEnabled)
@@ -62,7 +62,7 @@ struct SettingsView: View {
                 SettingsSection(header: "SCHEDULE") {
                     SettingsRow(
                         icon: "clock",
-                        iconColor: .orange,
+                    iconColor: .appRed,
                         title: "Schedule Notifications",
                         subtitle: notificationSubtitle,
                         accessory: .chevron(action: {
@@ -75,7 +75,7 @@ struct SettingsView: View {
                 SettingsSection(header: "LEARNING") {
                     SettingsRow(
                         icon: "lightbulb.fill",
-                        iconColor: .yellow,
+                    iconColor: .appRed,
                         title: "Learning Tips",
                         subtitle: "Effective learning strategies",
                         accessory: .chevron(action: {
@@ -88,7 +88,7 @@ struct SettingsView: View {
                 SettingsSection(header: "SUPPORT") {
                     SettingsRow(
                         icon: "questionmark.circle.fill",
-                        iconColor: .blue,
+                    iconColor: .appRed,
                         title: "Help & Support",
                         subtitle: "Get help and contact support",
                         accessory: .chevron(action: {
@@ -98,7 +98,7 @@ struct SettingsView: View {
                     
                     SettingsRow(
                         icon: "doc.text.fill",
-                        iconColor: .blue,
+                    iconColor: .appRed,
                         title: "Terms & Privacy",
                         subtitle: "View terms and privacy policy",
                         accessory: .chevron(action: {
@@ -108,7 +108,7 @@ struct SettingsView: View {
                     
                     SettingsRow(
                         icon: "info.circle.fill",
-                        iconColor: .blue,
+                    iconColor: .appRed,
                         title: "About",
                         subtitle: "App version and information",
                         accessory: .chevron(action: {
@@ -119,22 +119,22 @@ struct SettingsView: View {
                 
                 // CACHE Section
                 SettingsSection(header: "CACHE") {
-                    SettingsRow(
-                        icon: "trash.fill",
-                        iconColor: .red,
-                        title: "Clear Cache",
-                        subtitle: "Clear word states cache",
-                        accessory: .button(
-                            badge: nil,
-                            action: {
-                                showingClearCacheAlert = true
-                            }
-                        )
+                SettingsRow(
+                    icon: "trash.fill",
+                    iconColor: .appRed,
+                    title: "Clear Cache",
+                    subtitle: "Clear word states cache",
+                    accessory: .button(
+                        badge: nil,
+                        action: {
+                            showingClearCacheAlert = true
+                        }
                     )
+                )
                     
                     SettingsRow(
                         icon: "clock.arrow.circlepath",
-                        iconColor: .red,
+                        iconColor: .appRed,
                         title: "Clear History",
                         subtitle: "Delete test/practice history",
                         accessory: .button(
@@ -202,7 +202,7 @@ struct SettingsSection<Content: View>: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(header)
                 .font(.system(size: 13, weight: .semibold))
-                .foregroundColor(.secondary)
+                .foregroundColor(.appRed)
                 .textCase(.uppercase)
                 .padding(.horizontal, 20)
                 .padding(.top, 20)
@@ -242,7 +242,7 @@ struct SettingsRow: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.system(size: 17, weight: .semibold))
-                    .foregroundColor(.primary)
+                    .foregroundColor(.appRed)
                 
                 Text(subtitle)
                     .font(.system(size: 13))
@@ -269,12 +269,12 @@ struct SettingsRow: View {
                             .foregroundColor(.white)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 4)
-                            .background(Color.red)
+                            .background(Color.appRed)
                             .cornerRadius(12)
                     }
                     Text("Clear")
                         .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(.red)
+                        .foregroundColor(.appRed)
                 }
             }
         }

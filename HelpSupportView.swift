@@ -81,9 +81,9 @@ struct HelpSupportView: View {
                         
                         if showError && !allFieldsFilled {
                             Section {
-                                Text("All fields are required.")
-                                    .foregroundColor(.red)
-                                    .font(.subheadline)
+                        Text("All fields are required.")
+                            .foregroundColor(.appRed)
+                            .font(.subheadline)
                             }
                         }
                         
@@ -101,7 +101,7 @@ struct HelpSupportView: View {
                                     .foregroundColor(.white)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 50)
-                                    .background(allFieldsFilled ? Color.green : Color.gray)
+                                    .background(allFieldsFilled ? Color.appRed : Color.gray)
                                     .cornerRadius(12)
                             }
                             .disabled(!allFieldsFilled)
@@ -110,11 +110,12 @@ struct HelpSupportView: View {
                     }
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            Text("Contact us")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                        }
+                    ToolbarItem(placement: .principal) {
+                        Text("Contact us")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.appRed)
+                    }
                     }
                 } else {
                     VStack {
@@ -124,6 +125,7 @@ struct HelpSupportView: View {
                                 Text("We'd love to hear from you!")
                                     .font(.title3)
                                     .fontWeight(.bold)
+                                    .foregroundColor(.appRed)
                                 
                                 Text("Whether you have questions,")
                                     .font(.body)
@@ -142,7 +144,7 @@ struct HelpSupportView: View {
                                 Text("Email: abashelariprod@gmail.com")
                                     .font(.subheadline)
                                 
-                                Text("Website: https://abashelariprod.wordpress.com")
+                                Text("Website: https://abashelari.com")
                                     .font(.subheadline)
                                 
                                 Divider()
@@ -167,7 +169,7 @@ struct HelpSupportView: View {
                                     .foregroundColor(.white)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 50)
-                                    .background(Color.green)
+                                    .background(Color.appRed)
                                     .cornerRadius(12)
                                     .padding(.horizontal, 32)
                             }
@@ -183,10 +185,11 @@ struct HelpSupportView: View {
                     .padding(.vertical, 32)
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
-                        ToolbarItem(placement: .principal) {
+                    ToolbarItem(placement: .principal) {
                             Text("Help and support")
                                 .font(.headline)
                                 .fontWeight(.semibold)
+                                .foregroundColor(.appRed)
                         }
                     }
                 }
@@ -196,12 +199,14 @@ struct HelpSupportView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if showForm {
-                        Button("Cancel") {
-                            showForm = false
+                        Button(action: { showForm = false }) {
+                            Text("Cancel")
+                                .foregroundColor(.appRed)
                         }
                     } else {
-                        Button("Close") {
-                            dismiss()
+                        Button(action: { dismiss() }) {
+                            Text("Close")
+                                .foregroundColor(.appRed)
                         }
                     }
                 }
